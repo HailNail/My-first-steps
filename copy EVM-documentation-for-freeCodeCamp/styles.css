@@ -1,0 +1,124 @@
+body {
+  background-color: rgb(255, 249, 243);
+  font-size: 20px;
+}
+
+.EVM-header {
+  background-color: black;
+  color: rgb(255, 249, 243);
+  text-align: center;
+  margin: 0 auto;
+}
+
+.sidebar {
+  display: block;
+  position: sticky;
+  top: 0;
+  height: 100vh;
+  overflow-y: auto;
+  background-color: rgba(255, 228, 196, 0.5);
+  padding-left: 16px;
+}
+
+@media (max-width: 768px) {
+  .sidebar {
+    width: 100%;
+    min-width: 200px;
+    height: 200px;
+    text-align: center;
+    position: static;
+  }
+  aside {
+    width: 100% !important;
+    padding-left: 0.5rem;
+    margin-left: 0.5rem;
+    line-height: 2 !important;
+    float: none !important;
+    display: block !important;
+  }
+}
+
+main {
+  text-align: justify;
+}
+
+h2 {
+  padding-top: 10px;
+  padding-bottom: 10px;
+}
+
+.bold {
+  font-weight: bold;
+}
+
+.refer {
+  color: rgb(34, 154, 112);
+  text-decoration: none;
+}
+
+.refer:hover {
+  color: chocolate;
+  background-color: rgba(222, 184, 135, 0.3);
+}
+
+img {
+  width: 100%;
+  max-width: auto;
+}
+
+article {
+  background-color: rgba(127, 255, 212, 0.2);
+  border-radius: 20px;
+  border-color: azure;
+  padding: 10px;
+  margin: 20px auto;
+}
+
+aside {
+  width: 40%;
+  padding-left: 0.5rem;
+  margin-left: 0.5rem;
+  float: right;
+  box-shadow: inset 5px 0px 5px -5px #29627e;
+  font-style: italic;
+  color: #29627e;
+  line-height: 2.5;
+}
+
+aside > p {
+  margin: 0.5rem;
+}
+
+.highlight {
+  font-size: 20px;
+  font-weight: bold;
+}
+
+section > ul > li {
+  padding: 12px;
+  border-left: 5px solid #29627e;
+  margin: 5px 0;
+  width: auto;
+  list-style: none;
+  padding-top: 20px;
+}
+
+section > ul > li > ul {
+  list-style: square;
+}
+
+code {
+  background-color: #1e1e1e;
+  color: #e5e5e5 !important;
+  font-family: "Fira Code", monospace;
+  padding: 10px 15px;
+  border-radius: 8px;
+  display: block;
+  white-space: pre-line;
+  margin: 0 50px 15px;
+  border-left: 5px solid #29627e;
+}
+
+pre {
+  margin: 20px;
+}

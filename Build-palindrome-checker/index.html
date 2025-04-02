@@ -1,0 +1,50 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Palindrome Checker</title>
+    <link href="styles.css" rel="stylesheet" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Phudu:wght@300..900&family=Sigmar&family=Space+Mono&family=Teko:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <main>
+      <header>
+        <h1>HailNail</h1>
+        <img src="HL.png" alt="logo" />
+      </header>
+      <section class="palindrome-section">
+        <h1>Is it a Palindrome?</h1>
+        <label for="text-input">
+          Enter in text to check for a palindrome:
+        </label>
+        <input
+          class="palindrome-input"
+          id="text-input"
+          type="text"
+          name="text-input"
+          required
+        />
+        <button class="check-btn" id="check-btn">Check</button>
+        <p class="palindrome-result" id="result"></p>
+      </section>
+      <section class="palindrome-definition-section">
+        <p class="palindrome-definition">
+          A <dfn class="dfn-element" id="def-palindrome">palindrome</dfn> is a
+          word or sentence that's spelled the same way both forward and
+          backward, ignoring punctuation, case, and spacing.
+        </p>
+      </section>
+      <footer class="credits">
+        <p class="palindrome-credits">Made specially for freeCodeCamp</p>
+        <p class="palindrome-credits">&copy; 2025 freeCodeCamp</p>
+      </footer>
+    </main>
+    <script src="./script.js"></script>
+  </body>
+</html>

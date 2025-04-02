@@ -1,0 +1,345 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link
+      href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css"
+      rel="stylesheet"
+    />
+
+    <link rel="stylesheet" href="styles.css" />
+    <title>EVM technical documentation</title>
+  </head>
+  <body>
+    <header class="EVM-header p-3">
+      <h1 class="EVM-header-one">
+        Ethereum Virtual Machine (EVM) Documentation
+      </h1>
+    </header>
+    <div class="container-md">
+      <div class="row">
+        <nav class="navbar col-md-3 col-lg-2 sidebar" id="navbar">
+          <h4 class="p-3">Navigation</h4>
+          <ul class="nav flex-column">
+            <li class="nav-item">
+              <a href="#introduction" class="nav-link">Introduction</a>
+            </li>
+            <li class="nav-item">
+              <a href="#prerequisites" class="nav-link">Prerequisites</a>
+            </li>
+            <li class="nav-item">
+              <a href="#from-ledger-to-state-machine" class="nav-link"
+                >From ledger to state machine</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#EVM-instructions" class="nav-link">EVM instructions</a>
+            </li>
+            <li class="nav-item">
+              <a href="#gas" class="nav-link">Gas and Fees</a>
+            </li>
+            <li class="nav-item">
+              <a href="#smart-contracts" class="nav-link"
+                >Introduction to smart contracts</a
+              >
+            </li>
+            <li class="nav-item">
+              <a href="#smart-contracts-languages" class="nav-link"
+                >Smart contracts languages</a
+              >
+            </li>
+          </ul>
+        </nav>
+        <main class="main-doc col-md-9 ms-sm-auto col-lg-10 p-4" id="main-doc">
+          <section class="main-section" id="introduction">
+            <h2 class="EVM-header-two">Introduction</h2>
+            <p class="EVM-info">
+              The Ethereum Virtual Machine (EVM) is a decentralized virtual
+              environment that executes code consistently and securely across
+              all Ethereum nodes. Nodes run the EVM to execute smart contracts,
+              using "gas" to measure the computational effort required for
+              operations, ensuring efficient resource allocation and network
+              security.
+            </p>
+            <article class="prerequisites" id="prerequisites">
+              <h2 class="EVM-header-two">Prerequisites</h2>
+              <p class="EVM-info">
+                Some basic familiarity with common terminology in computer
+                science such as
+                <a
+                  class="refer"
+                  href="https://en.wikipedia.org/wiki/Byte"
+                  target="_blank"
+                  >bytes</a
+                >,
+                <a
+                  class="refer"
+                  href="https://en.wikipedia.org/wiki/Computer_memory"
+                  target="_blank"
+                  >memory</a
+                >, and a
+                <a
+                  class="refer"
+                  href="https://en.wikipedia.org/wiki/Stack_(abstract_data_type)"
+                  target="_blank"
+                  >stack</a
+                >
+                are necessary to understand the EVM. It would also be helpful to
+                be comfortable with cryptography/blockchain concepts like
+                <a
+                  class="refer"
+                  href="https://en.wikipedia.org/wiki/Cryptographic_hash_function"
+                  target="_blank"
+                  >hash functions</a
+                >
+                and the
+                <a
+                  class="refer"
+                  href="https://en.wikipedia.org/wiki/Merkle_tree"
+                  target="_blank"
+                >
+                  Merkle tree</a
+                >.
+              </p>
+            </article>
+          </section>
+          <section class="main-section" id="from-ledger-to-state-machine">
+            <h2 class="EVM-header-two">From ledger to state machine</h2>
+            <p class="EVM-info">
+              The analogy of a
+              <span class="highlight">distributed ledger</span> is often used to
+              describe blockchains like <span class="bold">Bitcoin</span>, which
+              enable a decentralized currency using fundamental tools of
+              cryptography. The ledger maintains a record of activity which must
+              adhere to a set of rules that govern what someone can and cannot
+              do to modify the ledger. For example, a
+              <span class="bold">Bitcoin</span> address cannot spend more
+              Bitcoin than it has previously received. These rules underpin all
+              transactions on <span class="bold">Bitcoin</span> and many other
+              blockchains.
+            </p>
+            <p class="EVM-info">
+              While Ethereum has its own native cryptocurrency (ether) that
+              follows almost exactly the same intuitive rules, it also enables a
+              much more powerful function:
+              <a class="refer" href="#">smart contracts</a>. For this more
+              complex feature, a more sophisticated analogy is required. Instead
+              of a distributed ledger, Ethereum is a distributed
+              <a
+                class="refer"
+                href="https://en.wikipedia.org/wiki/Finite-state_machine"
+                target="_blank"
+                >state machine</a
+              >. Ethereum's state is a large data structure which holds not only
+              all accounts and balances, but a machine state, which can change
+              from block to block according to a pre-defined set of rules, and
+              which can execute arbitrary machine code. The specific rules of
+              changing state from block to block are defined by the EVM.
+            </p>
+            <figure>
+              <img src="evm.png" alt="EVM-illustrated" class="EVM-img" />
+              <figcaption class="EVM-illustrated-caption">
+                Diagram adapted from
+                <a
+                  class="refer"
+                  href="https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf"
+                  target="_blank"
+                  >Ethereum EVM illustrated</a
+                >
+              </figcaption>
+            </figure>
+          </section>
+          <section class="main-section" id="EVM-instructions">
+            <h2 class="EVM-header-two">EVM-instructions</h2>
+            <p class="EVM-info">
+              The EVM executes as a
+              <a
+                class="refer"
+                href="https://en.wikipedia.org/wiki/Stack_machine"
+                target="_blank"
+                >stack machine</a
+              >
+              with a depth of 1024 items. Each item is a 256-bit word, which was
+              chosen for the ease of use with 256-bit cryptography (such as
+              Keccak-256 hashes or secp256k1 signatures).
+            </p>
+            <p class="EVM-info">
+              During execution, the EVM maintains a transient memory (as a
+              word-addressed byte array), which does not persist between
+              transactions.
+            </p>
+            <p class="EVM-info">
+              Contracts, however, do contain a Merkle Patricia storage trie (as
+              a word-addressable word array), associated with the account in
+              question and part of the global state.
+            </p>
+            <p class="EVM-info">
+              Compiled smart contract bytecode executes as a number of EVM
+              opcodes, which perform standard stack operations like XOR, AND,
+              ADD, SUB, etc. The EVM also implements a number of
+              blockchain-specific stack operations, such as ADDRESS, BALANCE,
+              BLOCKHASH, etc.
+            </p>
+            <figure>
+              <img class="EVM-img" src="gas.png" alt="gas-illustrated" />
+              <figcaption class="EVM-illustrated-caption">
+                Diagram adapted from
+                <a
+                  class="refer"
+                  href="https://takenobu-hs.github.io/downloads/ethereum_evm_illustrated.pdf"
+                  target="_blank"
+                  >Ethereum EVM illustrated</a
+                >
+              </figcaption>
+            </figure>
+          </section>
+          <section class="main-section" id="gas">
+            <h2 class="EVM-header-two">Gas and fees</h2>
+            <p class="EVM-info">
+              Gas refers to the unit that measures the amount of computational
+              effort required to execute specific operations on the Ethereum
+              network.
+            </p>
+            <p class="EVM-info">
+              Since each Ethereum transaction requires computational resources
+              to execute, those resources have to be paid for to ensure Ethereum
+              is not vulnerable to spam and cannot get stuck in infinite
+              computational loops. Payment for computation is made in the form
+              of a gas fee.
+            </p>
+            <p class="EVM-info">
+              The gas fee is
+              <span class="bold"
+                >the amount of gas used to do some operation, multiplied by the
+                cost per unit gas</span
+              >. The fee is paid regardless of whether a transaction succeeds or
+              fails.
+            </p>
+            <p class="EVM-info">
+              Gas fees have to be paid in Ethereum's native currency, ether
+              (ETH). Gas prices are usually quoted in gwei, which is a
+              denomination of ETH. Each gwei is equal to one-billionth of an ETH
+              (0.000000001 ETH or 10-9 ETH).
+            </p>
+            <p class="EVM-info">
+              For example, instead of saying that your gas costs 0.000000001
+              ether, you can say your gas costs 1 gwei.
+            </p>
+            <p class="EVM-info">
+              The word 'gwei' is a contraction of 'giga-wei', meaning 'billion
+              wei'. One gwei is equal to one billion wei. Wei itself (named
+              after
+              <a
+                class="refer"
+                href="https://en.wikipedia.org/wiki/Wei_Dai"
+                target="_blank"
+                >Wei Dai</a
+              >, creator of
+              <a
+                class="refer"
+                href="https://www.investopedia.com/terms/b/bmoney.asp"
+                target="_blank"
+                >b-money</a
+              >) is the smallest unit of ETH.
+            </p>
+          </section>
+          <section class="main-section" id="smart-contracts">
+            <h2 class="EVM-header-two">Introduction to smart contracts</h2>
+            <p class="EVM-info">
+              A "smart contract" is simply a program that runs on the Ethereum
+              blockchain. It's a collection of code (its functions) and data
+              (its state) that resides at a specific address on the Ethereum
+              blockchain.
+            </p>
+            <p class="EVM-info">
+              Smart contracts are a type of Ethereum account. This means they
+              have a balance and can be the target of transactions. However
+              they're not controlled by a user, instead they are deployed to the
+              network and run as programmed. User accounts can then interact
+              with a smart contract by submitting transactions that execute a
+              function defined on the smart contract. Smart contracts can define
+              rules, like a regular contract, and automatically enforce them via
+              the code. Smart contracts cannot be deleted by default, and
+              interactions with them are irreversible.
+            </p>
+            <h2 class="EVM-header-two" id="smart-contracts-languages">
+              Smart contract languages
+            </h2>
+            <p class="EVM-info">
+              A great aspect about Ethereum is that smart contracts can be
+              programmed using relatively developer-friendly languages. If
+              you're experienced with Python or any curly-bracket language(opens
+              in a new tab), you can find a language with familiar syntax.
+            </p>
+            <ul>
+              <span class="highlight">
+                Two most active and maintained languages are:</span
+              >
+              <li class="li">Solidity</li>
+              <li class="li">Vyper</li>
+            </ul>
+            <aside>
+              <p>
+                Previous knowledge of programming languages, especially of
+                JavaScript or Python, can help you make sense of differences in
+                smart contract languages. We also recommend you understand smart
+                contracts as a concept before digging too deep into the language
+                comparisons.
+              </p>
+            </aside>
+            <h2 class="EVM-header-two">Solidity</h2>
+            <ul class="EVM-unordered">
+              <li>
+                Object-oriented, high-level language for implementing smart
+                contracts.
+              </li>
+              <li>
+                Curly-bracket language that has been most profoundly influenced
+                by C++.
+              </li>
+              <li>
+                Statically typed (the type of a variable is known at compile
+                time).
+              </li>
+              <li>
+                Supports:
+                <ul>
+                  <li>Inheritance (you can extend other contracts).</li>
+                  <li>
+                    Libraries (you can create reusable code that you can call
+                    from different contracts – like static functions in a static
+                    class in other object oriented programming languages).
+                  </li>
+                  class="liTwo"
+                  <li>Complex user-defined types.</li>
+                </ul>
+              </li>
+            </ul>
+            <h3 class="EVM-header-two">Example contract</h3>
+            <pre>
+              <code class="EVM-code">
+              // SPDX-License-Identifier: GPL-3.0 pragma solidity >=
+              0.7.0;
+              contract Coin { // The keyword "public" makes variables //
+              accessible from other contracts address public minter; mapping
+              (address => uint) public balances};
+              // Events allow clients to react to specific // contract changes
+              you declare event Sent(address from, address to, uint
+              amount);
+              // Constructor code is only run when the contract // is created
+              constructor() { minter = msg.sender; }
+              // Sends an amount of newly created coins to an address // Can
+              only be called by the contract creator function mint(address
+              receiver, uint amount) public { require(msg.sender == minter);
+              require(amount < 1e60); balances[receiver] += amount; }</code>
+          </pre>
+          </section>
+        </main>
+      </div>
+    </div>
+    <footer class="p-4 text-center bg-dark text-white">
+      <p>&copy; 2025 EVM Documentation</p>
+    </footer>
+  </body>
+</html>

@@ -1,0 +1,138 @@
+* {
+  font-family: "Space Mono", monospace;
+  font-weight: 400;
+  font-style: normal;
+}
+
+body {
+  background: linear-gradient(0.25turn, #49c799, #ebffe3, #f6933c);
+  text-align: justify;
+  padding: 0 20px 0 20px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 10px;
+  width: 100%;
+  min-height: 100px;
+  max-height: auto;
+  background-color: rgba(96, 51, 51, 0.2);
+  font-weight: 700;
+}
+
+.text-container {
+  display: flex;
+  text-align: center;
+  flex-direction: column;
+  flex-grow: 1;
+  padding-left: 10px;
+}
+
+.text-container h1 {
+  margin: 0;
+}
+
+.text-container p {
+  margin: 0;
+  font-size: 20px;
+}
+
+figure {
+  margin: 10px auto;
+  min-width: 300px;
+  max-width: 900px;
+}
+
+figcaption {
+  position: relative;
+  text-align: center;
+  max-width: 900px;
+}
+
+.divide {
+  margin-top: 10px;
+  width: 100%;
+  height: 4px;
+  background: linear-gradient(0.25turn, #f6933c, #ebffe3, #49c799);
+}
+
+#image {
+  width: 900px;
+  height: 500px;
+  min-width: 300px;
+  margin: 10px 0;
+  border-radius: 10px;
+  box-shadow: 10px 10px rgba(63, 61, 61, 0.6);
+}
+
+#image-two {
+  display: block;
+  width: 900px;
+  height: auto;
+  min-width: 300px;
+  max-width: 100%;
+  margin: 10px auto;
+  border-radius: 10px;
+  box-shadow: 10px 10px rgba(63, 61, 61, 0.6);
+}
+
+.bold {
+  font-weight: bold;
+  letter-spacing: 2px;
+}
+
+.italic {
+  font-style: italic;
+  border-bottom: 1px solid black;
+}
+
+footer {
+  text-align: center;
+  margin: 10px auto;
+  min-width: 300px;
+  max-width: 900px;
+}
+
+#logo {
+  width: 120px;
+  height: auto;
+  border-radius: 10px;
+  margin-right: 10px;
+}
+
+main a {
+  color: #157652;
+  font-weight: 700;
+}
+
+main a:hover {
+  color: hotpink;
+  cursor: pointer;
+}
+
+main {
+  width: 80%;
+  margin: 0 auto 10px auto;
+  max-width: 900px;
+}
+
+div:has(> blockquote) {
+  background-color: rgba(253, 192, 192, 0.3);
+  margin: 10px auto;
+  padding: 15px;
+  border-radius: 5px;
+}
+
+blockquote p::before {
+  content: "\201C";
+}
+
+blockquote p::after {
+  content: "\201D";
+}
+
+blockquote + p {
+  text-align: right;
+}

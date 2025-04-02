@@ -1,0 +1,142 @@
+* {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+main {
+  background-color: bisque;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  font-family: "Barlow Condensed", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+  font-size: 32px;
+  padding: 15px;
+}
+
+header {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 10px;
+}
+
+header h1 {
+  font-size: 4rem;
+}
+
+img {
+  padding: 0;
+  margin-bottom: 10px;
+  height: 7rem;
+}
+
+.palindrome-section {
+  max-width: 500px;
+  width: 90%;
+  min-height: 100px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  border-radius: 20px;
+}
+.palindrome-section h1 {
+  font-size: 3rem;
+  margin-bottom: 30px;
+}
+
+.palindrome-section label {
+  text-align: center;
+  font-size: 1.4rem;
+  margin-bottom: 20px;
+}
+.palindrome-section input {
+  height: 40px;
+  width: 280px;
+  font-size: 1.4rem;
+  padding: 15px;
+  margin: 10px;
+  border: none;
+  border-bottom: 2px solid #f856a1;
+  display: inline-block;
+  text-align: center;
+  cursor: text;
+}
+
+.palindrome-section button {
+  font-size: 1.2rem;
+  width: 110px;
+  border: none;
+  padding: 10px;
+  border-radius: 15px;
+  background-color: #f856a1;
+  color: #fff;
+  cursor: pointer;
+  text-align: center;
+  display: inline-block;
+}
+
+.palindrome-section button:hover {
+  background-color: rgb(124, 37, 255);
+  color: rgb(255, 175, 175);
+  transition: background-color 0.3s ease, color 0.3s ease;
+}
+
+.palindrome-section div {
+  font-size: 20px;
+  margin: 20px;
+  padding: 15px;
+  border: 2px dotted rgb(225, 121, 47);
+  border-radius: 20px;
+  text-align: center;
+  display: none;
+}
+
+.palindrome-result-word {
+  color: #f856a1;
+  font-weight: 600;
+}
+
+.palindrome-definition-section {
+  max-width: 500px;
+  width: 90%;
+  min-height: 100px;
+  background-color: rgb(255, 255, 255);
+  padding: 15px;
+  text-align: center;
+  border-radius: 20px;
+  margin: 20px;
+}
+
+.palindrome-definition-section p {
+  margin: 0;
+  font-size: 1.7rem;
+}
+
+.palindrome-definition-section dfn {
+  color: #f856a1;
+  font-weight: 700;
+}
+
+.credits {
+  font-size: 1.2rem;
+  max-width: 500px;
+  width: 90%;
+  padding: 20px;
+  border-radius: 20px;
+  text-align: center;
+  background: linear-gradient(to right, #bd8065, #b63d14);
+  color: #fff;
+}
+
+.credits p {
+  margin: 0px;
+  padding: 5px;
+}
