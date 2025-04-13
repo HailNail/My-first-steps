@@ -1,0 +1,143 @@
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  margin: 0;
+  padding: 0;
+}
+
+:root {
+  --main: rgba(218, 165, 32, 0.5);
+}
+body {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  font-family: "Amarante", serif;
+  font-weight: 400;
+  font-style: normal;
+  background-image: url("forum.png");
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  background-attachment: fixed;
+  padding: 0 4px;
+}
+
+h1 {
+  font-size: 2.5rem;
+  text-align: center;
+  margin: 30px 0;
+}
+
+h2 {
+  font-size: 2rem;
+  text-align: center;
+  margin: 30px 0;
+}
+
+.input-container {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  justify-content: center;
+  align-items: center;
+  width: clamp(320px, 40vw, 460px);
+  margin: 10px auto;
+}
+
+.input-container label {
+  white-space: nowrap;
+  font-size: 16px;
+}
+
+.convert-btn {
+  font-size: inherit;
+  font-family: inherit;
+  background-color: var(--main);
+  width: 100%;
+  height: 2rem;
+  padding: 0 10px;
+  border: none;
+  border-radius: 10px;
+  box-shadow: 0 0 0 0.15em #f4aab9;
+  cursor: pointer;
+}
+
+.convert-btn:hover {
+  background-color: rgb(218, 165, 32);
+}
+.number {
+  font-size: inherit;
+  padding: 0.4rem;
+  width: 100%;
+  border-radius: 10px;
+  text-align: center;
+}
+
+.output-container {
+  margin-inline: auto;
+  width: clamp(320px, 50vw, 480px);
+}
+
+#result {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  font-size: 2rem;
+  text-align: center;
+  min-height: 80px;
+  margin-block-start: 20px;
+  padding: 15px;
+  border-radius: 10px;
+}
+
+#animation-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  text-align: center;
+  margin-block-end: 1rem;
+  min-height: 26vh;
+  padding-bottom: 1rem;
+  font-size: 1.5rem;
+}
+
+.animation-frame {
+  font-family: inherit;
+  text-align: center;
+}
+
+.credits {
+  font-size: 1.2rem;
+  max-width: 500px;
+  width: clamp(320px, 50vw, 480px);
+  border-radius: 10px;
+  text-align: center;
+  background: linear-gradient(to right, #bd8065, rgb(218, 165, 32));
+  opacity: 0.5;
+}
+
+.credits p {
+  margin: 0px;
+  padding: 5px;
+  color: #fff;
+}
+
+.fade-effect {
+  transition: opacity 1s ease;
+}
+
+@media screen and (min-width: 36em) {
+  body {
+    font-size: 1rem;
+  }
+  .input-container {
+    flex-direction: row;
+    width: unset;
+  }
+  .number {
+    width: unset;
+  }
+}

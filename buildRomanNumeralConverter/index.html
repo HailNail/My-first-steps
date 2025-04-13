@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Roman Numeral Converter</title>
+    <link rel="stylesheet" href="styles.css" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Amarante&family=Barlow+Condensed:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&family=Phudu:wght@300..900&family=Sigmar&family=Space+Mono&family=Teko:wght@300..700&family=Urbanist:ital,wght@0,100..900;1,100..900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <h1>
+      Arabic numerals to Roman <br />
+      Converter
+    </h1>
+    <section class="input-container">
+      <label for="number">Enter an arabic number:</label>
+      <input
+        value=""
+        type="number"
+        name="arabic number input"
+        id="number"
+        class="number"
+      />
+      <button class="convert-btn" id="convert-btn">Convert</button>
+    </section>
+    <section class="output-container">
+      <p id="result" for="number" aria-live="polite"></p>
+      <h2>Description</h2>
+      <div id="animation-container">
+        <p id="animation-text" class="animation-frame"></p>
+      </div>
+    </section>
+    <footer class="credits">
+      <p class="roman-credits">Made specially for freeCodeCamp</p>
+      <p class="roman-credits">&copy; 2025 freeCodeCamp</p>
+    </footer>
+    <script src="script.js"></script>
+  </body>
+</html>
