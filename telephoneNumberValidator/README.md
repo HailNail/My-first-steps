@@ -55,9 +55,3 @@ Handles various formats: parentheses, dashes, spaces, and country code.
 > _"Coding with unwavering focus and relentless spirit."_
 
 ---
-
-## 📜 License
-
-This project is open source and available under the [MIT License](LICENSE).
-
----
