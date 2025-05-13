@@ -27,8 +27,6 @@ This is the **Cash Register Project**, built with HTML, CSS, and JavaScript. It 
 
 ## 🖼️ Screenshots
 
-> Add the screenshots to a `/screenshots/` folder and reference them like this:
-
 ### 🪙 Home Screen
 
 ![Home screen](./screenshots/home.png)
