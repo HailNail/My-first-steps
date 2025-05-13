@@ -1,0 +1,198 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link href="styles.css" rel="stylesheet" />
+    <title>Cash Register Project</title>
+  </head>
+  <body>
+    <header class="header">
+      <h1>Cash Register Project</h1>
+      <p>Welcome, Samurai Accountant. Time to balance the coins</p>
+    </header>
+    <main class="main-container">
+      <div id="change-due" aria-live="polite"></div>
+      <div class="container-one">
+        <div class="inner-container-one">
+          <form>
+            <div id="purchase-form">
+              <label for="purchase-amount">Enter Purchase Amount:</label>
+              <div class="input-with-btn">
+                <input
+                  id="purchase-amount"
+                  type="number"
+                  step="0.01"
+                  placeholder="log total($)"
+                  name="amount"
+                  max="300"
+                  required
+                />
+                <button
+                  type="button"
+                  class="value-btn"
+                  id="random-purchase-btn"
+                >
+                  🎲
+                </button>
+                <button
+                  type="button"
+                  class="value-btn"
+                  id="default-purchase-btn"
+                >
+                  Default
+                </button>
+              </div>
+            </div>
+            <div id="cash-form">
+              <label for="cash">Enter Cash From Customer:</label>
+              <div class="input-with-btn">
+                <input
+                  id="cash"
+                  type="number"
+                  step="0.01"
+                  placeholder="cash received($)"
+                  name="amount"
+                  max="300"
+                  required
+                />
+                <button type="button" class="value-btn" id="random-cash-btn">
+                  🎲
+                </button>
+                <button type="button" class="value-btn" id="default-cash-btn">
+                  Default
+                </button>
+              </div>
+              <div id="for-purchase-btn">
+                <button class="purchase-btn" type="submit" id="purchase-btn">
+                  Purchase
+                </button>
+              </div>
+            </div>
+          </form>
+        </div>
+      </div>
+      <h2>Cash Drawer</h2>
+      <div class="cash-drawer" id="cash-draw">
+        <dialog class="select">
+          <div class="dialog-header">
+            <button class="svg" id="close-dialog" aria-label="Close">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="24"
+                width="24"
+                viewBox="0 0 24 24"
+                fill="red"
+                role="img"
+              >
+                <path
+                  d="M18.3 5.71L12 12.01 5.71 5.71 4.29 7.12 10.59 13.41 4.29 19.71 5.71 21.12 12 14.83 18.29 21.12 19.71 19.71 13.41 13.41 19.71 7.12z"
+                />
+              </svg>
+            </button>
+          </div>
+          <h3>Select Cash Amount</h3>
+          <div class="cid-container">
+            <div class="dialog-inputs">
+              <label>PENNY: </label>
+              <input data-denom="PENNY" type="number" step="0.01" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>NICKEL: </label>
+              <input data-denom="NICKEL" type="number" step="0.05" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>DIME: </label>
+              <input data-denom="DIME" type="number" step="0.1" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>QUARTER: </label>
+              <input data-denom="QUARTER" type="number" step="0.25" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>ONE: </label>
+              <input data-denom="ONE" type="number" step="1" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>FIVE: </label>
+              <input data-denom="FIVE" type="number" step="5" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>TEN: </label>
+              <input data-denom="TEN" type="number" step="10" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>TWENTY: </label
+              ><input data-denom="TWENTY" type="number" step="20" max="200" />
+            </div>
+            <div class="dialog-inputs">
+              <label>ONE HUNDRED: </label>
+              <input
+                data-denom="ONE HUNDRED"
+                type="number"
+                step="100"
+                max="200"
+              />
+            </div>
+            <div class="dialog-btns">
+              <button id="default-cid" class="dialog-btn">Default</button>
+              <button id="random-cid" class="dialog-btn">🎲</button>
+            </div>
+            <button id="apply-cid">Apply changes</button>
+          </div>
+        </dialog>
+        <div class="cash-list">
+          <ul id="cid-list"></ul>
+        </div>
+        <button class="purchase-btn" type="button" id="add-amount">
+          Add Cash
+        </button>
+      </div>
+      <div class="container-two">
+        <div class="inner-container-two history-box">
+          <div class="transaction-header">
+            <h3>📜Transaction History</h3>
+            <button
+              class="svg"
+              id="clear-history-btn"
+              aria-label="Clear History"
+            >
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                height="20"
+                width="20"
+                viewBox="0 0 24 24"
+                fill="darkred"
+                role="img"
+              >
+                <path
+                  d="M3 6h18v2H3zm2 3h14v12H5zm5 2v6h2v-6zm4 0v6h2v-6zM9 4v1h6V4h5v2H4V4z"
+                />
+              </svg>
+            </button>
+          </div>
+          <div id="history-log">
+            <p class="history-log" id="p-default"></p>
+            <ul id="history-list"></ul>
+          </div>
+        </div>
+        <div class="inner-container-two description-box">
+          <div class="description-header">
+            <h3>How It Works</h3>
+          </div>
+          <div>
+            <p>
+              Enter the purchase amount and the amount of cash the customer
+              provides. Then, using the current cash in the drawer, the system
+              will calculate if enough change can be returned using available
+              denominations (pennies, nickels, dimes, etc.). If possible, it
+              will return the exact change needed.
+            </p>
+          </div>
+        </div>
+      </div>
+    </main>
+    <footer><p>© 2025 Cash Register Samurai. Made with 💻 + ☕</p></footer>
+    <script src="script.js"></script>
+  </body>
+</html>
