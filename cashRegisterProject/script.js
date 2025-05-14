@@ -201,7 +201,14 @@ purchaseBtn.addEventListener("click", (e) => {
   const cash = parseFloat(cashInput.value);
   const cidArray = Object.entries(cashDrawer);
 
-  if (isNaN(price) || isNaN(cash) || price >= 300 || cash >= 300) {
+  if (
+    isNaN(price) ||
+    isNaN(cash) ||
+    price >= 300 ||
+    cash >= 300 ||
+    price < 0 ||
+    cash < 0
+  ) {
     alert(
       "Please enter valid numbers for both price and cash, each less than 300."
     );
